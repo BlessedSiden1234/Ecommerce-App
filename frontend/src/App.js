@@ -40,7 +40,7 @@ function App(){
       <Navbar bg = "dark" variant = "dark" expand = "lg">
         <Container>
           <LinkContainer to = "/">
-              <Navbar.Brand> Amazon</Navbar.Brand>
+              <Navbar.Brand> Trendify</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id = "basic-navbar-nav">
@@ -90,7 +90,10 @@ function App(){
         </Container>
       </main>
       <footer>
-        <div className = "text-center"> All rights reserved</div>
+     <div className="text-center mt-4 p-3" style={{ backgroundColor: '#f8f9fa', color: '#555' }}>
+  &copy; 2025 Blessed Siden. All rights reserved.
+</div>
+
       </footer>
     </div>
     </BrowserRouter>

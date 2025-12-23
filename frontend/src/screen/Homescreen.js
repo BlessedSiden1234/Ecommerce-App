@@ -1,7 +1,6 @@
 //import data from '../data'
 import { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
-import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
@@ -21,7 +20,7 @@ const reducer = (state, action) =>{
     }
 }
 function Homescreen (){
-    const [{loading, error, products}, dispatch] = useReducer(logger(reducer), {
+    const [{loading, error, products}, dispatch] = useReducer(reducer, {
         products:[],
         loading: true,
         error: '',
@@ -29,7 +28,7 @@ function Homescreen (){
    // const [products, setProducts] = useState([]);
     useEffect(() =>{
         const fetchData = async()=>{
-            dispatch({type: 'FETCH_REQUUEST'});
+            dispatch({type: 'FETCH_REQUEST'});
             try{
                 const result = await axios.get('/api/products');
                 dispatch({type: 'FETCH_SUCCESS', payload: result.data})
@@ -45,7 +44,7 @@ function Homescreen (){
     return(
         <div>
             <Helmet>
-                <title> Amazon </title>
+                <title> Trendify </title>
             </Helmet>
         <h1>Featured Products</h1>
             <div className = "products">

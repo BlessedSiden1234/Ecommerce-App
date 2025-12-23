@@ -5,6 +5,7 @@ import Rating from './Rating';
 import axios from 'axios';
 import { useContext } from 'react';
 import { Store } from '../Store';
+import '../styles/Product.css';
 
 function Product(props){
     const {product} = props;
@@ -24,22 +25,24 @@ function Product(props){
         })
     }
     return(
-        <Card>
-            <Link to = {`/product/${product.slug}`}>
-                <img className = "card-img-top" src = {product.image} alt= {product.name}/>
-            </Link>
-            <Card.Body>
-                <Link to = {`/product/${product.slug}`}>
-                    <Card.Title> {product.name}</Card.Title>
-                </Link>
-                <Rating rating = {product.rating} numReviews = {product.numReviews}></Rating>
-                <Card.Text> {product.price}</Card.Text>
-                {product.countInStock === 0 ? <Button variant = "light" disabled> Out of Stock</Button> :
-                <Button onClick = {()=>addToCartHandler(product)}> Add to Cart</Button>
-                }
-                
-            </Card.Body>
-        </Card>
+       <Card className="product-card">
+    <Link to={`/product/${product.slug}`}>
+        <img className="card-img-top" src={product.image} alt={product.name} />
+    </Link>
+    <Card.Body className="product-card-body">
+        <Link to={`/product/${product.slug}`} className="product-card-title">
+            <Card.Title>{product.name}</Card.Title>
+        </Link>
+        <Rating rating={product.rating} numReviews={product.numReviews} />
+        <Card.Text className="product-card-price">${product.price}</Card.Text>
+        {product.countInStock === 0 ? (
+            <Button variant="light" disabled>Out of Stock</Button>
+        ) : (
+            <Button onClick={() => addToCartHandler(product)}>Add to Cart</Button>
+        )}
+    </Card.Body>
+</Card>
+
     )
 }
 
