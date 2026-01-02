@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://your-frontend-name.onrender.com'
+    'https://ecommerce-app-2-6n1n.onrender.com'
   ],
   credentials: true
 }))
