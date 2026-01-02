@@ -89,6 +89,13 @@ PAYPAL_CLIENT_ID=<YOUR_PAYPAL_CLIENT_ID>
 STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
 ```
 
+Create a `.env` file in the **frontend** directory with the following:
+
+```env
+REACT_APP_API_URL=http://localhost:5000
+```
+
+
 > Replace `sk_test_your_stripe_secret_key` with your Stripe test secret key.
 
 ---
