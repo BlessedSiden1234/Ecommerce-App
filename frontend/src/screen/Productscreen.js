@@ -13,6 +13,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import {getError }from '../util';
 import { Store } from '../Store';
+import api from '../api';
 
 const reducer = (state, action) =>{
   switch(action.type){
@@ -40,7 +41,7 @@ function Productscreen(){
       const fetchData = async () =>{
         dispatch({type:'FETCH_REQUEST'});
         try{
-          const result = await axios.get(`/api/products/slug/${slug}`)
+          const result = await api.get(`/api/products/slug/${slug}`)
           dispatch({type: 'FETCH_SUCCESS', payload: result.data})
         }
         catch(err){

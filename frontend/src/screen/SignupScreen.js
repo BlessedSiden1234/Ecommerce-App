@@ -7,6 +7,7 @@ import {toast} from 'react-toastify';
 import { getError } from '../util';
 import { Store } from '../Store';
 import axios from 'axios';
+import api from '../api';
 
 export default function SignupScreen(){
     const [name, setName] = useState('')
@@ -29,7 +30,7 @@ export default function SignupScreen(){
             return;
         }
         try{
-            const {data} = await axios.post(`/api/users/signup`, {name, email, password})
+            const {data} = await api.post(`/api/users/signup`, {name, email, password})
             ctxDispatch({type:'USER_SIGNIN', payload: data})
             localStorage.setItem('userInfo', JSON.stringify(data))
             navigate(redirect || '/')

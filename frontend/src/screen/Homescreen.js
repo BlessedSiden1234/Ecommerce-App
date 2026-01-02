@@ -7,6 +7,8 @@ import Product from '../components/Product';
 import {Helmet} from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import api from '../api';
+
 const reducer = (state, action) =>{
     switch(action.type){
         case 'FETCH_REQUEST':
@@ -30,7 +32,7 @@ function Homescreen (){
         const fetchData = async()=>{
             dispatch({type: 'FETCH_REQUEST'});
             try{
-                const result = await axios.get('/api/products');
+                const result = await api.get('/api/products');
                 dispatch({type: 'FETCH_SUCCESS', payload: result.data})
             }
             catch(error){

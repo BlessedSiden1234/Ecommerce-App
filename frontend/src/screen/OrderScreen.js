@@ -13,6 +13,7 @@ import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
+import api from '../api';
 
 
 const reducer = (state, action) =>{
@@ -68,7 +69,7 @@ export default function OrderScreen(){
         return actions.order.capture().then(async function(details){
             try{
                 dispatch({type: 'PAY_REQUEST'});
-                const {data} = await axios.put(`/api/orders/${order._id}/pay`, details, {
+                const {data} = await api.put(`/api/orders/${order._id}/pay`, details, {
                     headers: {
                         authorization: `Bearer ${userInfo.token}`
                     }

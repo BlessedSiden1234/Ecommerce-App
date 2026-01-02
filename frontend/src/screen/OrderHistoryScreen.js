@@ -7,6 +7,7 @@ import MessageBox from '../components/MessageBox';
 import axios from 'axios';
 import { getError } from '../util';
 import { Button } from 'react-bootstrap';
+import api from '../api';
 
 const reducer = (state, action) =>{
     switch(action.type){
@@ -34,7 +35,7 @@ export default function OrderHistoryScreen(){
         const fetchData = async() =>{
             dispatch({type: 'FETCH_REQUEST'});
             try{
-                const {data} = await axios.get(`/api/orders/mine`, {
+                const {data} = await api.get(`/api/orders/mine`, {
                     headers: {
                         authorization: `Bearer ${userInfo.token}`
                     }

@@ -8,7 +8,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import MessageBox from "../components/MessageBox";
 import { ListGroup } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
-import axios from "axios";
+import api from "../api";
 
 
 export default function CartScreen(){
@@ -16,7 +16,7 @@ export default function CartScreen(){
     const {state, dispatch: ctxDispatch} = useContext(Store);
     const { cart:{cartItems}} = state;
     const updateCartHandler = async(item, quantity)=>{
-        const {data} = await axios.get(`api/products/${item._id}`);
+        const {data} = await api.get(`api/products/${item._id}`);
         if(data.countInStock < quantity){
             window.alert('Sorry product is out of Stock');
             return;
